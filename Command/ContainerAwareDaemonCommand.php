@@ -18,7 +18,7 @@ abstract class ContainerAwareDaemonCommand extends ContainerAwareCommand {
     public function run(InputInterface $inputInterface, OutputInterface $outputInterface)
     {
 
-        $outputInterface->writeln('The command has <info>successfully</info> started.');
+        register_shutdown_function(array($this, 'terminate'), array($outputInterface, $inputInterface));
 
         \Amp\run(function () use ($inputInterface, $outputInterface) {
             \Amp\repeat(function () use ($inputInterface, $outputInterface) {
@@ -30,9 +30,9 @@ abstract class ContainerAwareDaemonCommand extends ContainerAwareCommand {
                 parent::run($inputInterface, $outputInterface);
 
             }, 1);
-        });
 
-        register_shutdown_function(array($this, 'terminate'), array($outputInterface, $inputInterface));
+            $outputInterface->writeln('The command has <info>successfully</info> started.');
+        });
     }
 
     protected function terminate(InputInterface $inputInterface, OutputInterface $outputInterface)
