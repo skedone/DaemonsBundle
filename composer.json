@@ -1,0 +1,31 @@
+{
+  "name" : "edo/daemons-bundle",
+  "description" : "A simple bundle to deamonize your Symfony's commands",
+  "type" : "symfony-bundle",
+  "authors" : [{
+    "name" : "Edoardo Biraghi",
+    "email" : "edoardo.biraghi@gmail.com"
+  }],
+  "keywords" : [
+    "daemon, daemons, symfony2, daemonize, background process, background"
+  ],
+  "license" : [
+    "MIT"
+  ],
+  "require" : {
+    "amphp/amp": "^1.0"
+  },
+  "autoload" : {
+    "psr-0" : {
+      "Edo\\DaemonsBundle" : ""
+    }
+  },
+  "target-dir" : "Edo/DaemonsBundle",
+  "repositories" : [{
+  }],
+  "extra" : {
+    "branch-alias" : {
+      "dev-master" : "master-dev"
+    }
+  }
+}
