@@ -7,7 +7,7 @@
     "email" : "edoardo.biraghi@gmail.com"
   }],
   "keywords" : [
-    "daemon, daemons, symfony2, daemonize, background process, background"
+    "daemon", "background process", "background"
   ],
   "license" : [
     "MIT"
