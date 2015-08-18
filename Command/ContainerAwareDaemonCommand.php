@@ -17,10 +17,10 @@ abstract class ContainerAwareDaemonCommand extends ContainerAwareCommand {
 
     public function run(InputInterface $inputInterface, OutputInterface $outputInterface)
     {
-
-        register_shutdown_function(array($this, 'terminate'), array($outputInterface, $inputInterface));
+        register_shutdown_function(array($this, 'terminate'), $inputInterface, $outputInterface);
 
         \Amp\run(function () use ($inputInterface, $outputInterface) {
+
             \Amp\repeat(function () use ($inputInterface, $outputInterface) {
 
                 if($leaking = $this->isLeaking()) {
@@ -35,7 +35,7 @@ abstract class ContainerAwareDaemonCommand extends ContainerAwareCommand {
         });
     }
 
-    protected function terminate(InputInterface $inputInterface, OutputInterface $outputInterface)
+    public function terminate(InputInterface $inputInterface, OutputInterface $outputInterface)
     {
 
     }
